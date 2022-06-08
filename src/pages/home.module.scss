@@ -1,1 +1,35 @@
-// TODO
+.container {
+  margin: auto;
+}
+
+.postPreview {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5px;
+  margin: 4rem 0;
+  gap: 0.5rem;
+
+  > p {
+    font-size: 18px;
+  }
+}
+
+.dateAndAuthor {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5rem;
+  gap: 2rem;
+
+  p {
+    font-size: 14px;
+    text-align: left;
+  }
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
