@@ -6,6 +6,7 @@
 
 :root {
   --white: #ffffff;
+  --pink: #ff57b2;
 
   --gray-100: #f8f8f8;
   --gray-200: #e1e1e6;
@@ -38,7 +39,8 @@
 body {
   background: var(--gray-850);
   color: var(--gray-400);
-  font: 400 1rem 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
 }
 
 h1 {
