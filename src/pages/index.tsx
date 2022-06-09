@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { useState } from 'react';
-import { FiCalendar, FiUser } from 'react-icons/fi';
+import PostIntro from '../components/PostIntro';
 import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
@@ -72,19 +72,11 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
 
       <div className={commonStyles.container}>
         {results.map(post => (
-          <div key={post.uid} className={styles.postPreview}>
-            <h1>{post.data.title}</h1>
-            <p>{post.data.subtitle}</p>
-            <div className={styles.dateAndAuthor}>
-              <div>
-                <FiCalendar /> {post.first_publication_date}
-              </div>
-              <div>
-                <FiUser />
-                {post.data.author}
-              </div>
-            </div>
-          </div>
+          <PostIntro
+            uid={post.uid}
+            data={post.data}
+            publication={post.first_publication_date}
+          />
         ))}
 
         {postsPagination.next_page !== null && (
@@ -117,7 +109,7 @@ export const getStaticProps: GetStaticProps = async () => {
         post.first_publication_date
       ).toLocaleDateString('pt-BR', {
         day: '2-digit',
-        month: 'long',
+        month: 'short',
         year: 'numeric',
       }),
       data: {

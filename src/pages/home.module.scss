@@ -2,34 +2,6 @@
   margin: auto;
 }
 
-.postPreview {
-  display: flex;
-  flex-direction: column;
-  padding: 0.5px;
-  margin: 4rem 0;
-  gap: 0.5rem;
-
-  > p {
-    font-size: 14px;
-  }
-}
-
-.dateAndAuthor {
-  display: flex;
-  flex-direction: row;
-  margin-top: 0.5rem;
-  gap: 2rem;
-
-  div {
-    font-size: 12px;
-    text-align: left;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-  }
-}
-
 .showMoreBtn {
   background: none;
   color: var(--pink);
