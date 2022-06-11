@@ -6,6 +6,7 @@ import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
+import Header from '../components/Header';
 
 interface Post {
   uid?: string;
@@ -71,25 +72,31 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
       </Head>
 
       <div className={commonStyles.container}>
-        {results.map(post => (
-          <PostIntro
-            uid={post.uid}
-            data={post.data}
-            publication={post.first_publication_date}
-          />
-        ))}
+        <div className={commonStyles.headerContainer}>
+          <Header />
+        </div>
 
-        {postsPagination.next_page !== null && (
-          <div>
-            <button
-              className={styles.showMoreBtn}
-              type="button"
-              onClick={() => nextPageHandler()}
-            >
-              Carregar mais posts
-            </button>
-          </div>
-        )}
+        <main className={commonStyles.content}>
+          {results.map(post => (
+            <PostIntro
+              uid={post.uid}
+              data={post.data}
+              publication={post.first_publication_date}
+            />
+          ))}
+
+          {postsPagination.next_page !== null && (
+            <div>
+              <button
+                className={styles.showMoreBtn}
+                type="button"
+                onClick={() => nextPageHandler()}
+              >
+                Carregar mais posts
+              </button>
+            </div>
+          )}
+        </main>
       </div>
     </>
   );
@@ -99,7 +106,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient({});
   const response = await prismic.getByType('post', {
     fetch: ['post.title', 'post.subtitle', 'post.author'],
-    pageSize: 2,
+    pageSize: 3,
   });
 
   const posts = response.results.map(post => {
